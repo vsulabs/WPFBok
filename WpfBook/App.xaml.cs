@@ -21,9 +21,18 @@ namespace WpfBook
             base.OnStartup(e);
             List<Book> books = new List<Book>()
             {
-                new Book(1, "Колобок", "", new DateTime(1610, 1, 1)),
-                new Book(2, "Война и мир", "Л.Н. Толстой", new DateTime(1869, 1, 1)),
-                new Book(3, "Отцы и дети", "И.С. Тургенев", new DateTime(1862, 1, 1))
+                new Book("Скотный двор", "Дж. Оруэлл", new DateTime(1945, 1, 1)),
+                new Book("Колобок", "", new DateTime(1610, 1, 1)),
+                new Book("Война и мир", "Л.Н. Толстой", new DateTime(1869, 1, 1)),
+                new Book("Отцы и дети", "И.С. Тургенев", new DateTime(1862, 1, 1)),
+                new Book("Над пропостью во ржи", "Дж. Селенджер", new DateTime(1950, 1, 1)),
+                new Book("Мастер и Маргарита", "М.А. Булгаков", new DateTime(1921, 1, 1)),
+                new Book("Репка", "", new DateTime(1488, 1, 1)),
+                new Book("1984", "Дж. Оруэлл", new DateTime(1949, 1, 1)),
+                new Book("После балла", "Л.Н. Толстой", new DateTime(1850, 1, 1)),
+                new Book("Шантарам", "Дж. Робертс", new DateTime(2013, 1, 1)),
+                new Book("Глотнуть воздуха", "Дж. Оруэлл", new DateTime(1939, 1, 1))
+
             };
 
             MainView view = new MainView();

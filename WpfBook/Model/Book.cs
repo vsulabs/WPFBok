@@ -8,9 +8,10 @@ namespace WpfBook.Model
 {
     public class Book
     {
-        public Book(int id, string title, string author, DateTime publishDate)
+        private static int bookCount = 1;
+        public Book(string title, string author, DateTime publishDate)
         {
-            this.BookId = id;
+            this.BookId = bookCount++;
             this.Title = title;
             this.Author = author;
             this.PublishDate = publishDate;

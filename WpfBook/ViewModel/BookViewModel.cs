@@ -117,7 +117,7 @@ namespace WpfBook.ViewModel
         public string PublishDate
         {
             get { 
-                return Book.PublishDate.ToString("yyyy.MM"); 
+                return Book.PublishDate.ToString("yyyy"); 
             }
             set {
                 DateTime date = new DateTime();
