@@ -4,10 +4,10 @@
         Title="MainView" Height="485" Width="525">
     <Window.Resources>
         <DataTemplate x:Key="BookTemplate">
-            <Grid x:Name="Row">
+            <Grid Name="Row" MouseLeftButtonDown="OnRowClick">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30" />
-                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
@@ -43,8 +43,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListView Name="BookGrid" Grid.Row="1" ItemTemplate="{StaticResource BookTemplate}" Margin="4,178,12,13"  ItemsSource="{Binding BookList}"  >
+        <ListView Name="BookGrid"  Grid.Row="1" ItemTemplate="{StaticResource BookTemplate}" Margin="4,178,12,13"  ItemsSource="{Binding BookList}"  >
         </ListView>
+
+        <Label Content="Title" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="12,20,0,0" x:Name="labelTitle" VerticalAlignment="Top" />
+        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="80,20,0,0" Name="txtTitle" 
+                 VerticalAlignment="Top" Width="178" />
 
         <Label Content="DateSearch" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="12,110,0,0" x:Name="labelDateSearch" VerticalAlignment="Top" />
         <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="80,110,0,0" Name="txtDateSearch" 

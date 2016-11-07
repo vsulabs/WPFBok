@@ -120,7 +120,17 @@ namespace WpfBook.ViewModel
                 return Book.PublishDate.ToString("yyyy.MM"); 
             }
             set {
-                //Book.PublishDate = value;
+                DateTime date = new DateTime();
+                bool succes = DateTime.TryParse(value, out date);
+                if (!succes)
+                {
+                    CultureInfo info = CultureInfo.InvariantCulture;
+                    succes = DateTime.TryParseExact(value, "yyyy", info, DateTimeStyles.AssumeLocal, out date);
+                    if (!succes)
+                        return;
+                }
+
+                Book.PublishDate = date;
                 OnPropertyChanged("PublishDate");
             }
         }
