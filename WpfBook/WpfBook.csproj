@@ -55,6 +55,7 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\BookViewModel.cs" />
+    <Compile Include="YearDateConverter.cs" />
     <Compile Include="View\EditView.xaml.cs">
       <DependentUpon>EditView.xaml</DependentUpon>
     </Compile>

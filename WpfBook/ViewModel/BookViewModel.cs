@@ -114,23 +114,13 @@ namespace WpfBook.ViewModel
             }
         }
 
-        public string PublishDate
+        public DateTime PublishDate
         {
             get { 
-                return Book.PublishDate.ToString("yyyy"); 
+                return Book.PublishDate; 
             }
             set {
-                DateTime date = new DateTime();
-                bool succes = DateTime.TryParse(value, out date);
-                if (!succes)
-                {
-                    CultureInfo info = CultureInfo.InvariantCulture;
-                    succes = DateTime.TryParseExact(value, "yyyy", info, DateTimeStyles.AssumeLocal, out date);
-                    if (!succes)
-                        return;
-                }
-
-                Book.PublishDate = date;
+                Book.PublishDate = value;
                 OnPropertyChanged("PublishDate");
             }
         }
