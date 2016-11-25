@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace WpfBook.View
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Логика взаимодействия для Edit.xaml
     /// </summary>
-    public partial class MainView : Window
+    public partial class EditView : Window
     {
-        public MainView()
+        public EditView()
         {
             InitializeComponent();
         }

@@ -4,8 +4,11 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using WpfBook.Model;
+using WpfBook.View;
 
 namespace WpfBook.ViewModel
 {
@@ -54,6 +57,28 @@ namespace WpfBook.ViewModel
         public MainViewModel(List<Book> books)
         {
             BookList = new ObservableCollection<BookViewModel>(books.Select(b => new BookViewModel(b)));
+            EventManager.RegisterClassHandler(typeof(ListBoxItem), 
+                ListBoxItem.MouseLeftButtonDownEvent, 
+                new RoutedEventHandler(OnMouseLeftButtonDown));
+        }
+
+        private void OnMouseLeftButtonDown(object sender, RoutedEventArgs e)
+        {
+            EditView window = new EditView();
+            ListBoxItem item = (ListBoxItem)sender;
+            BookViewModel f = (BookViewModel)item.DataContext;
+
+            window.Closing += (o, args) =>
+            {
+                bool error = f.Title.Count() == 0;
+                if (error)
+                {
+                    args.Cancel = true;
+                }
+            };
+
+            window.DataContext = f;
+            window.ShowDialog();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

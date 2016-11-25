@@ -1,0 +1,42 @@
+﻿<Window x:Class="WpfBook.View.EditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Edit" Height="176.692" Width="300">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                            Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Label Content="Book Id" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="12,20,0,0" 
+               x:Name="labelId" VerticalAlignment="Top" />
+        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="100,20,0,0" Name="txtId" 
+                 VerticalAlignment="Top" Width="178" 
+                 Text="{Binding Path=BookId, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Content="Title" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="12,50,0,0" 
+               x:Name="labelTitle" VerticalAlignment="Top" />
+        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="100,50,0,0" Name="txtTitle" 
+                 VerticalAlignment="Top" Width="178" 
+                 Text="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged, 
+                 ValidatesOnDataErrors=True, ValidatesOnExceptions=True, NotifyOnValidationError=True}"/>
+        
+        <Label Content="Author" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="12,80,0,0" 
+               x:Name="labelAuthor" VerticalAlignment="Top" />
+        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="100,80,0,0" Name="txtAuthor" 
+                 VerticalAlignment="Top" Width="178" 
+                 Text="{Binding Path=Author, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+        <Label Content="Publish Date" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="12,110,0,0" 
+               x:Name="labelDate" VerticalAlignment="Top" />
+        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="100,110,0,0" Name="txtDate" 
+                 VerticalAlignment="Top" Width="178" 
+                 Text="{Binding Path=PublishDate, UpdateSourceTrigger=PropertyChanged}"/>
+    </Grid>
+</Window>

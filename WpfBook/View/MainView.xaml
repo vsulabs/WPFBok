@@ -1,12 +1,12 @@
 ﻿<Window x:Class="WpfBook.View.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:databinding="clr-namespace:WpfBook"
+        xmlns:converter="clr-namespace:WpfBook"
         Title="MainView" Height="485" Width="525">
     <Window.Resources>
-        <databinding:YearDateConverter x:Key="YearDateConverter" />
+        <converter:YearDateConverter x:Key="YearDateConverter" />
         <DataTemplate x:Key="BookTemplate">
-            <Grid Name="Row" MouseLeftButtonDown="OnRowClick">
+            <Grid Name="Row">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30" />
                     <ColumnDefinition Width="100" />
@@ -46,7 +46,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <ListView Name="BookGrid"  Grid.Row="1" ItemTemplate="{StaticResource BookTemplate}" Margin="4,50,12,13" 
-                  ItemsSource="{Binding BookList}" >
+                  ItemsSource="{Binding BookList}">
         </ListView>
 
         <CheckBox Tag="Sort" Grid.Row="1" HorizontalAlignment="Left" Margin="300,22,0,0" Name="cbSort"  

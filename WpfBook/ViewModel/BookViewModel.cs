@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace WpfBook.ViewModel
 {
-    public class BookViewModel : INotifyPropertyChanged
+    public class BookViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
         public Book Book;
         public static string SearchDate { get; set; }
@@ -103,6 +103,7 @@ namespace WpfBook.ViewModel
                 OnPropertyChanged("Title");
             }
         }
+        // astar.srv@mail.ru
 
         public string Author
         {
@@ -131,6 +132,29 @@ namespace WpfBook.ViewModel
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                switch (columnName)
+                {
+                    case "Title":
+                        if (string.IsNullOrEmpty(Book.Title))
+                        {
+                            return "Name should not be empty";
+                        }
+                        break;
+                }
+
+                return "";
             }
         }
     }
